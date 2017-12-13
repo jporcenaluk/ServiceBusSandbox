@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace ServiceBus.Desktop
+namespace ServiceBus.RESTDesktop
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
