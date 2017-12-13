@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ServiceBus.NET.Library;
+using System.Threading.Tasks;
 
 namespace ServiceBus.NET.Desktop
 {
@@ -29,11 +30,11 @@ namespace ServiceBus.NET.Desktop
 
         }
 
-        private void SendMessage_Click(object sender, RoutedEventArgs e)
+        private async void SendMessage_Click(object sender, RoutedEventArgs e)
         {
             //Send a message on the queue
             var message = MessageToSend.Text;
-            var response = Messaging.SendMessage(message);
+            var response = await Messaging.SendMessage(message);
             MessagesReceived.Items.Add(response);
         }
     }
