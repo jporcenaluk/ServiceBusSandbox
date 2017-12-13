@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.ServiceBus;
 
-namespace ServiceBus.RESTLibrary
+namespace ServiceBus.REST.Library
 {
     public class Messaging
     {

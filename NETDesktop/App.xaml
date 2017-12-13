@@ -1,7 +1,7 @@
-﻿<Application x:Class="ServiceBus.REST.Desktop.App"
+﻿<Application x:Class="NETDesktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ServiceBus"
+             xmlns:local="clr-namespace:NETDesktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

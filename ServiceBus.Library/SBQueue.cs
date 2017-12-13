@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ServiceBus.RESTLibrary
+namespace ServiceBus.REST.Library
 {
     public class SBQueue : ISBQueue
     {
