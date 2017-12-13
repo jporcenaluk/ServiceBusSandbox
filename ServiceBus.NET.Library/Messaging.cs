@@ -7,5 +7,9 @@ namespace ServiceBus.NET.Library
 {
     public class Messaging
     {
+        public string SendMessage(string message)
+        {
+            return "Not Implemented";
+        }
     }
 }

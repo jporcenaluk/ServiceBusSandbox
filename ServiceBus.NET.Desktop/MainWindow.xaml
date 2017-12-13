@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TextBox Name="MessageToSend" Margin="70,55,311,237"></TextBox>
+        <Button Name="SendMessage" Content="Send Message" HorizontalAlignment="Left" Margin="70,106,0,0" VerticalAlignment="Top" Width="136" Click="SendMessage_Click"/>
+        <ListBox Name="MessagesReceived" HorizontalAlignment="Left" Height="152" Margin="248,55,0,0" VerticalAlignment="Top" Width="219"/>
+        <Label Content="Message To Send" HorizontalAlignment="Left" Margin="70,24,0,0" VerticalAlignment="Top" Height="31"/>
+        <Label Content="Messages Received&#xD;&#xA;" HorizontalAlignment="Left" Margin="248,24,0,0" VerticalAlignment="Top" Height="31"/>
+
     </Grid>
 </Window>
