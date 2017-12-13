@@ -21,12 +21,24 @@ namespace ServiceBus.NET.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ServiceBus.NET.Library.Messaging Messaging { get; set; }
+        public MessageReceiver Receiver { get; set; }
+        public MessageSender Sender { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            Messaging = new Messaging();
+            Sender = new MessageSender();
+            Receiver = new MessageReceiver();
+            Receiver.MessageReceived += Messaging_MessageReceived;
+        }
+
+        private void Messaging_MessageReceived(object sender, EventArgs e)
+        {
+            //Make it work on UI thread
+            Dispatcher.Invoke(() =>
+            {
+                MessagesReceived.Items.Add("Added a message");
+            });
 
         }
 
@@ -34,8 +46,8 @@ namespace ServiceBus.NET.Desktop
         {
             //Send a message on the queue
             var message = MessageToSend.Text;
-            var response = await Messaging.SendMessage(message);
-            MessagesReceived.Items.Add(response);
+            var response = await Sender.SendMessage(message);
+            MessagesSent.Items.Add("Sent message " + message);
         }
     }
 }
