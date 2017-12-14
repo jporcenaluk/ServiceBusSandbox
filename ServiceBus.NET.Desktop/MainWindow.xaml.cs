@@ -32,12 +32,12 @@ namespace ServiceBus.NET.Desktop
             Receiver.MessageReceived += Messaging_MessageReceived;
         }
 
-        private void Messaging_MessageReceived(object sender, EventArgs e)
+        private void Messaging_MessageReceived(object sender, MessageEventArgs e)
         {
             //Make it work on UI thread
             Dispatcher.Invoke(() =>
             {
-                MessagesReceived.Items.Add("Added a message");
+                MessagesReceived.Items.Add(e.MessageBody);
             });
 
         }

@@ -10,7 +10,7 @@ namespace ServiceBus.NET.Library
 {
     public class MessageReceiver : MessageClient
     {
-        public delegate void MessageReceivedEventHandler(object source, EventArgs args);
+        public delegate void MessageReceivedEventHandler(object source, MessageEventArgs args);
         public event MessageReceivedEventHandler MessageReceived;
 
         static IQueueClient MessageReceivedClient;
@@ -56,19 +56,23 @@ namespace ServiceBus.NET.Library
             // Complete the message so that it is not received again.
             // This can be done only if the queue Client is created in ReceiveMode.PeekLock mode (which is the default).
             await MessageReceivedClient.CompleteAsync(message.SystemProperties.LockToken);
-            OnMessageReceived();
+            OnMessageReceived(messageBody);
             // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
             // If queueClient has already been closed, you can choose to not call CompleteAsync() or AbandonAsync() etc.
             // to avoid unnecessary exceptions.
         }
 
-        protected virtual void OnMessageReceived()
+        protected virtual void OnMessageReceived(string messageBody)
         {
-            MessageReceived?.Invoke(this, EventArgs.Empty);
+            var messageEventArgs = new MessageEventArgs
+            {
+                MessageBody = messageBody
+            };
+            MessageReceived?.Invoke(this, messageEventArgs);
         }
     }
 
-    public class MessageEvent: EventArgs
+    public class MessageEventArgs: EventArgs
     {
         public string MessageBody { get; set; }
     }
